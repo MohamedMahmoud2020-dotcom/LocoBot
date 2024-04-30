@@ -1,0 +1,7 @@
+<launch>
+    <!-- My Package launch file -->
+    <node pkg="first_package" type="talker.py" name="ObiWan"  output="screen">
+    </node>
+    <node pkg="first_package" type="listener.py" name="ObiWan" output="screen">
+    </node>
+</launch>
