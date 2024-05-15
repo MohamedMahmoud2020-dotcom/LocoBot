@@ -51,3 +51,19 @@ for epoch in range(num_epochs):
             running_loss = 0.0
 
 print('Finished Training')
+
+# Test the CNN model
+cnn_model.eval()  # Set the model to evaluation mode
+correct = 0
+total = 0
+
+with torch.no_grad(): 
+    for data in testloader:
+        images, labels = data
+        outputs = cnn_model(images)
+        _, predicted = torch.max(outputs.data, 1)
+        total += labels.size(0)
+        correct += (predicted == labels).sum().item()
+
+print(f'Accuracy of the model on the 10,000 test images: {100 * correct / total:.2f}%')
+
